@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-    <script src="../script.js"></script>
+    <script type="text/javascript" src="../script.js"></script>
 
     <title>Vivify Blog</title>
 

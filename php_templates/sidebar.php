@@ -1,7 +1,7 @@
 <?php include("../content/connection.php") ?>
 <?php
 
-    $sql = "SELECT title FROM posts ORDER BY created_at DESC";
+    $sql = "SELECT id,title FROM posts ORDER BY created_at DESC";
     $statement = $connection->prepare($sql);
     $statement->execute();
     $statement->setFetchMode(PDO::FETCH_ASSOC);
@@ -18,7 +18,7 @@
 
          ?>
 
-        <p><a href="../"<?php echo ($posts[$i]['title']) ?></p>
+        <p><a href="../content/single_post.php?id=<?php echo($posts[$i]['id']) ?>"><?php echo ($posts[$i]['title']) ?></a></p>
 
         <?php
             };

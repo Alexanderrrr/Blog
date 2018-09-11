@@ -26,15 +26,9 @@
             LEFT JOIN comments ON comments.post_id=posts.id
             WHERE posts.id = $postId";
             $statement = $connection->prepare($sql);
-
-            // izvrsavamo upit
             $statement->execute();
 
-            // zelimo da se rezultat vrati kao asocijativni niz.
-            // ukoliko izostavimo ovu liniju, vratice nam se obican, numerisan niz
             $statement->setFetchMode(PDO::FETCH_ASSOC);
-
-            // punimo promenjivu sa rezultatom upita
             $commentsInPosts = $statement->fetchAll();
 
             $comments = [];
@@ -49,8 +43,66 @@
                 <p><?php echo ($commentsInPosts[0]["body"])?></p>
             </div>
 
-            <button onclick='hidingComments()' class="btn btn-primary" type="button" name="hide-button">Hide Comments
+
+            <form name="firstForm" action="create_comment.php" onsubmit="return commentForm()" method="post">
+              <div class="form-group">
+                <label for="commentName">Your Name </label>
+                <input name="fname" type="text" class="form-control" placeholder="Enter Name" value="">
+                <small  class="form-text text-muted">This name and comment are public</small>
+              </div>
+              <div class="form-group">
+                <label for="">Enter Your Comment</label>
+                <textarea name="comment" class="form-control" rows="8" cols="80"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form><br><br>
+
+            <script type="text/javascript">
+                function commentForm () {
+                  var formName = document.forms["firstForm"]["fname"].value;
+                  var formComment = document.forms["firstForm"]["comment"].value;
+                  if (formComment === "" || formName === "") {
+                      alert("All Fields Required");
+                      return false;
+                    }
+
+                }
+
+
+
+            </script>
+
+
+            <button
+                onclick="hidingComments()" id="b" class="btn btn-default" type="button" name="hide-button">Hide Comments
             </button>
+
+            <!-- skrivanje komentara -->
+            <script type="text/javascript">
+                function hidingComments () {
+                    var btn = document.getElementById('b');
+                    var btnComments = document.getElementById("postComments");
+
+                    if (btnComments.style.display === "none") {
+                        btnComments.style.display = "block";
+                        btn.innerText = "Hide Comments";
+
+                    } else {
+
+                        btnComments.style.display = "none";
+                        btn.innerText="Show Comments";
+
+                      }
+
+
+                }
+
+
+
+            </script>
+            <br><br>
 
             <div id="postComments">
                 <?php
