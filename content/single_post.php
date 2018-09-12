@@ -14,7 +14,6 @@
 
             <?php
 
-            // pripremamo upit
             $sql = "SELECT posts.id AS posts_id,
             posts.title, posts.body,
             posts.author AS post_author,
@@ -41,18 +40,47 @@
                 <h2 class="blog-post-title"> <?php echo ($commentsInPosts[0]["title"])?></h2>
                 <p class="blog-post-meta"><?php echo ($commentsInPosts[0]["created_at"])?> <a href="#"><?php echo ($commentsInPosts[0]["post_author"])?></a></p>
                 <p><?php echo ($commentsInPosts[0]["body"])?></p>
+
+                <form action="delete_post.php" method="post" onsubmit="return promptMsg()">
+
+                    <input type="hidden" name="postId" value=<?php echo $postId ?>>
+                    <button class="btn btn-default" type="submit">Delete This Post</button>
+
+
+                </form>
+
+                <!-- Delete post prompt -->
+                <script type="text/javascript">
+                    function promptMsg () {
+
+                        var answer = prompt("Do you really want to delete this post? Y/N");
+                        if (answer === "n" || answer === "N") {
+                          return false;
+                        } else if (answer === "y" || answer === "Y") {
+                            return true;
+
+                          }
+                          else {
+                            alert("Please enter Y or N");
+                            return false;
+                          }
+                    }
+
+                </script>
             </div>
 
 
             <form name="firstForm" action="create_comment.php" onsubmit="return commentForm()" method="post">
               <div class="form-group">
-                <label for="commentName">Your Name </label>
-                <input name="fname" type="text" class="form-control" placeholder="Enter Name" value="">
+                <label for="fname">Your Name </label>
+                <input name="fname" type="text" class="form-control alert alert-danger" placeholder="Enter Name" value="">
                 <small  class="form-text text-muted">This name and comment are public</small>
               </div>
               <div class="form-group">
-                <label for="">Enter Your Comment</label>
-                <textarea name="comment" class="form-control" rows="8" cols="80"></textarea>
+                <label for="comment">Enter Your Comment</label>
+                <textarea name="comment" class="form-control alert alert-danger" rows="8" cols="80"></textarea>
+                <input type="hidden" name="postId" value=<?php echo $postId ?>>
+
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>
@@ -99,8 +127,6 @@
 
                 }
 
-
-
             </script>
             <br><br>
 
@@ -110,16 +136,25 @@
                 ?>
                     <ul>
                         <li><?php echo($comment['author']) ?>
+
                             <ul>
                                 <li><?php echo ($comment['text'])?></li>
                             </ul>
                         </li>
                     </ul>
 
+                    <form name="deleteForm" action="delete_comment.php" method="post">
+                      <button class="btn btn-default" type="submit" name="delete-button">delete</button>
+                      <input type="hidden" name="postId" value=<?php echo $postId ?>>
+                      <input type="hidden" name="commentId" value=<?php echo $comment['comments_id'] ?>>
+
+
+                    </form>
+
 
                     <hr>
                 <?php
-                }
+              };
                 ?>
 
             </div> <!-- post comments -->
