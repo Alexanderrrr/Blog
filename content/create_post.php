@@ -8,7 +8,7 @@
      <div class="row">
 
          <div class="col-sm-8 blog-main">
-                 <form name="postForm" action="create_post_back.php" onsubmit="return postForm()" method="post">
+                 <form name="postForm" action="create_post_back.php"  onsubmit="return reqFields()" method="post">
                    <div class="form-group">
                      <label for="titleName">Title Name </label>
                      <input name="titleName" type="text" class="form-control alert alert-danger" placeholder="Enter Name" value="">
@@ -19,7 +19,7 @@
                      <small  class="form-text text-muted">This name and comment are public</small>
                    </div>
                    <div class="form-group">
-                     <label for="bodyText">Enter Your Comment</label>
+                     <label for="bodyText">Enter Your Post</label>
                      <textarea name="bodyText" class="form-control alert alert-danger" rows="8" cols="80"></textarea>
 
                    </div>
@@ -29,7 +29,7 @@
                  </form><br><br>
 
                  <script type="text/javascript">
-                     function postForm () {
+                     function reqFields () {
                        var formTitle = document.forms["postForm"]["titleName"].value;
                        var formName = document.forms["postForm"]["YourName"].value;
                        var formComment = document.forms["postForm"]["bodyText"].value;

@@ -1,9 +1,9 @@
 body {
-  font-size: 14px;
+  font-size: 14px !important;
 }
 
 .blog-masthead {
-  background-color: #b34848;
+  background-color: #b34848 !important;
 }
 
 
@@ -18,11 +18,7 @@ h4,
 h5,
 .h5,
 h6,
-.h6 {
-  color: #b34848;
+.h6,
+.blog-post-title>a {
+  color: #b34848 !important;
 }
-
-
-/* .blog-post-title:hover {
-  color: #b34848;
-} */
