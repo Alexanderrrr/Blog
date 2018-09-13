@@ -48,25 +48,6 @@
 
 
                 </form>
-
-                <!-- Delete post prompt -->
-                <script type="text/javascript">
-                    function promptMsg () {
-
-                        var answer = prompt("Do you really want to delete this post? Y/N");
-                        if (answer === "n" || answer === "N") {
-                          return false;
-                        } else if (answer === "y" || answer === "Y") {
-                            return true;
-
-                          }
-                          else {
-                            alert("Please enter Y or N");
-                            return false;
-                          }
-                    }
-
-                </script>
             </div>
 
 
@@ -87,47 +68,12 @@
 
             </form><br><br>
 
-            <script type="text/javascript">
-                function commentForm () {
-                  var formName = document.forms["firstForm"]["fname"].value;
-                  var formComment = document.forms["firstForm"]["comment"].value;
-                  if (formComment === "" || formName === "") {
-                      alert("All Fields Required");
-                      return false;
-                    }
-
-                }
-
-
-
-            </script>
 
 
             <button
                 onclick="hidingComments()" id="b" class="btn btn-default" type="button" name="hide-button">Hide Comments
             </button>
 
-            <!-- skrivanje komentara -->
-            <script type="text/javascript">
-                function hidingComments () {
-                    var btn = document.getElementById('b');
-                    var btnComments = document.getElementById("postComments");
-
-                    if (btnComments.style.display === "none") {
-                        btnComments.style.display = "block";
-                        btn.innerText = "Hide Comments";
-
-                    } else {
-
-                        btnComments.style.display = "none";
-                        btn.innerText="Show Comments";
-
-                      }
-
-
-                }
-
-            </script>
             <br><br>
 
             <div id="postComments">
@@ -144,6 +90,7 @@
                     </ul>
 
                     <form name="deleteForm" action="delete_comment.php" method="post">
+
                       <button class="btn btn-default" type="submit" name="delete-button">delete</button>
                       <input type="hidden" name="postId" value=<?php echo $postId ?>>
                       <input type="hidden" name="commentId" value=<?php echo $comment['comments_id'] ?>>

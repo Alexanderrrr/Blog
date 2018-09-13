@@ -41,4 +41,7 @@
             <p class="lead blog-description">An example blog template built with Bootstrap.</p>
         </div>
     </div>
+    <script src="../js/script.js" type="text/javascript">
+
+    </script>
 </header>
