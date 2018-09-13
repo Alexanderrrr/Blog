@@ -1,5 +1,7 @@
 <?php
     include("connection.php");
+    include("../php_templates/prepareQuery.php");
+
     $commentId = $_POST["commentId"];
     $postId = $_POST["postId"];
  ?>
@@ -7,9 +9,7 @@
 
  <?php
      $sql= "DELETE  FROM comments WHERE id=$commentId";
-     $statement = $connection->prepare($sql);
-     $statement->execute();
-
+     prepareAndExecute($sql, $connection);
      header("Location: single_post.php?id=$postId");
 
  ?>

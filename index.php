@@ -1,5 +1,6 @@
 <?php
     include("php_templates/header.php");
+include("content/connection.php");
  ?>
 <main role="main" class="container">
 
@@ -38,7 +39,7 @@
                     <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
                 </ol>
                 <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-            </div><!-- /.blog-post -->
+            </div>
 
             <div class="blog-post">
                 <h2 class="blog-post-title"><a href="../content/single_post.php">Another blog post</a></h2>
@@ -50,7 +51,7 @@
                 </blockquote>
                 <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
                 <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            </div><!-- /.blog-post -->
+            </div>
 
             <div class="blog-post">
                 <h2 class="blog-post-title"><a href="../content/single_post.php">New feature</a></h2>
@@ -64,23 +65,21 @@
                 </ul>
                 <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
                 <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-            </div><!-- /.blog-post -->
+            </div>
 
             <nav class="blog-pagination">
                 <a class="btn btn-outline-primary" href="#">Older</a>
                 <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
             </nav>
 
-        </div><!-- /.blog-main -->
+        </div>
 
       <?php include("php_templates/sidebar.php"); ?>
 
-    </div><!-- /.row -->
+    </div>
 
-</main><!-- /.container -->
+</main>
 <?php
 include("php_templates/footer.php");
 
  ?>
-</body>
-</html>

@@ -26,6 +26,20 @@ function hidingComments () {
 
 }
 
+
+function reqFields () {
+  var formTitle = document.forms["postForm"]["titleName"].value;
+  var formName = document.forms["postForm"]["YourName"].value;
+  var formComment = document.forms["postForm"]["bodyText"].value;
+
+  if (!formTitle || !formName || !formComment) {
+      alert("All Fields Required");
+      return false;
+    }
+
+}
+
+
 function promptMsg () {
 
     var answer = prompt("Do you really want to delete this post? Y/N");

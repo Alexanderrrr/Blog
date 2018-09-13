@@ -1,5 +1,5 @@
 <?php
-    include("connection.php");
+    include_once "connection.php";
     include("../php_templates/header.php");
  ?>
  <main role="main" class="container">
@@ -9,12 +9,17 @@
          <div class="col-sm-8 blog-main">
 
            <?php
+           function executeAndFetch ($var, $connection)
+           {
+             $statement = $connection->prepare($var);
+             $statement->execute();
+             $statement->setFetchMode(PDO::FETCH_ASSOC);
+             return $statement->fetchAll();
+           };
 
                $sql = "SELECT id, title, body, author, created_at FROM posts ORDER BY created_at DESC";
-               $statement = $connection->prepare($sql);
-               $statement->execute();
-               $statement->setFetchMode(PDO::FETCH_ASSOC);
-               $posts = $statement->fetchAll();
+
+               $posts = executeAndFetch ($sql, $connection);
 
            ?>
            <?php
@@ -31,13 +36,13 @@
               };
           ?>
 
-         </div><!-- /.blog-main -->
+         </div>
 
        <?php include("../php_templates/sidebar.php"); ?>
 
-     </div><!-- /.row -->
+     </div>
 
- </main><!-- /.container -->
+ </main>
  <?php
  include("../php_templates/footer.php");
 

@@ -28,29 +28,15 @@
 
                  </form><br><br>
 
-                 <script type="text/javascript">
-                     function reqFields () {
-                       var formTitle = document.forms["postForm"]["titleName"].value;
-                       var formName = document.forms["postForm"]["YourName"].value;
-                       var formComment = document.forms["postForm"]["bodyText"].value;
-
-                       if (formTitle === "" || formName === "" || formComment === "") {
-                           alert("All Fields Required");
-                           return false;
-                         }
-
-                     }
-
-                 </script>
 
 
-               </div><!-- /.blog-main -->
+               </div>
 
              <?php include("../php_templates/sidebar.php"); ?>
 
-           </div><!-- /.row -->
+           </div>
 
-       </main><!-- /.container -->
+       </main>
  <?php
  include("../php_templates/footer.php");
 
